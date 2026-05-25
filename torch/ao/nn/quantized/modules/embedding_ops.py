@@ -146,11 +146,11 @@ class Embedding(torch.nn.Module):
                 dtype=torch.quint8,
             )
         else:
-            expected_shape = [num_embeddings, embedding_dim]
-            if list(_weight.shape) != expected_shape:
+            expected_shape = (num_embeddings, embedding_dim)
+            if _weight.shape != expected_shape:
                 raise AssertionError(
                     f"Shape of weight does not match num_embeddings and embedding_dim: "
-                    f"expected {expected_shape}, got {list(_weight.shape)}"
+                    f"expected {expected_shape}, got {_weight.shape}"
                 )
             qweight = _weight
 

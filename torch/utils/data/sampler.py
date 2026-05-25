@@ -265,7 +265,7 @@ class WeightedRandomSampler(Sampler[int]):
         if len(weights_tensor.shape) != 1:
             raise ValueError(
                 "weights should be a 1d sequence but given "
-                f"weights have shape {tuple(weights_tensor.shape)}"
+                f"weights have shape {weights_tensor.shape}"
             )
 
         self.weights = weights_tensor

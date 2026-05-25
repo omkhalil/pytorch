@@ -1511,7 +1511,7 @@ class LinearCrossEntropyLoss(_WeightedLoss):
     ) -> None:
         if weight is not None and weight.shape != (num_classes,):
             raise RuntimeError(
-                f"expected weight shape to be {(num_classes,)}, got {tuple(weight.shape)}"
+                f"expected weight shape to be {(num_classes,)}, got {weight.shape}"
             )
         if label_smoothing < 0 or label_smoothing > 1.0:
             raise RuntimeError(

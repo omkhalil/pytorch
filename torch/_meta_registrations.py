@@ -4530,7 +4530,7 @@ def meta_repeat(self, repeats):
     # number of target dimensions is larger than the
     # number of source dimensions.
     num_new_dimensions = len(repeats) - self.dim()
-    padded_size = (1,) * num_new_dimensions + tuple(self.shape)
+    padded_size = (1,) * num_new_dimensions + self.shape
     target_size = [padded_size[i] * repeats[i] for i in range(len(repeats))]
     return self.new_empty(target_size)
 
@@ -6150,7 +6150,7 @@ def alloc_with_matching_layout(
     query: Tensor,
     res_shape: tuple[int, ...],
 ):
-    if tuple(query.shape) == res_shape:
+    if query.shape == res_shape:
         res = torch.empty_like(query)
     else:
         dim_order = sorted(
@@ -8296,8 +8296,8 @@ def meta_searchsorted(
         lambda: (
             "torch.searchsorted(): boundaries tensor should be 1 dimension or the "
             "first N-1 dimensions of boundaries tensor and input value tensor must "
-            f"match, but we got boundaries tensor {list(sorted_sequence.shape)} and "
-            f"input value tensor {list(self.shape)}"
+            f"match, but we got boundaries tensor {sorted_sequence.shape} and "
+            f"input value tensor {self.shape}"
         ),
     )
 
@@ -8306,7 +8306,7 @@ def meta_searchsorted(
         sorter is None or sorted_sequence.shape == sorter.shape,
         lambda: (
             "torch.searchsorted(): boundary and sorter must have the same size, but "
-            f"got boundary tensor {list(sorted_sequence.shape)} and got sorter tensor "
+            f"got boundary tensor {sorted_sequence.shape} and got sorter tensor "
             f"{list(sorter.shape) if sorter is not None else []}"
         ),
     )

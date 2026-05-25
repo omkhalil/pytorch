@@ -266,9 +266,7 @@ def check_escaped_gradients(
         for node in escaped:
             if hasattr(node, "variable"):
                 t = node.variable
-                tensor_info.append(
-                    f"  - Tensor(shape={list(t.shape)}, dtype={t.dtype})"
-                )
+                tensor_info.append(f"  - Tensor(shape={t.shape}, dtype={t.dtype})")
         tensor_details = (
             "\n".join(tensor_info) if tensor_info else "  (tensor details unavailable)"
         )
@@ -850,8 +848,8 @@ def _validate_outputs_match(
             if fake_val.shape != real_val.shape:
                 raise RuntimeError(
                     f"Shape mismatch at output position {i} in @leaf_function decorator.\n"
-                    f"fake_impl output shape: {list(fake_val.shape)}\n"
-                    f"real_impl output shape: {list(real_val.shape)}\n"
+                    f"fake_impl output shape: {fake_val.shape}\n"
+                    f"real_impl output shape: {real_val.shape}\n"
                     f"The fake_impl must produce tensors with the same shapes as real_impl."
                 )
 

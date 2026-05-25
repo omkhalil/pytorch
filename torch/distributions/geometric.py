@@ -81,7 +81,7 @@ class Geometric(Distribution):
                 invalid_value = value.data[~valid]
                 raise ValueError(
                     "Expected parameter probs "
-                    f"({type(value).__name__} of shape {tuple(value.shape)}) "
+                    f"({type(value).__name__} of shape {value.shape}) "
                     f"of distribution {repr(self)} "
                     f"to be positive but found invalid values:\n{invalid_value}"
                 )

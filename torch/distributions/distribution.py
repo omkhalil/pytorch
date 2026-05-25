@@ -76,7 +76,7 @@ class Distribution:
                 if not torch._is_all_true(valid):
                     raise ValueError(
                         f"Expected parameter {param} "
-                        f"({type(value).__name__} of shape {tuple(value.shape)}) "
+                        f"({type(value).__name__} of shape {value.shape}) "
                         f"of distribution {repr(self)} "
                         f"to satisfy the constraint {repr(constraint)}, "
                         f"but found invalid values:\n{value}"
@@ -323,7 +323,7 @@ class Distribution:
         if not torch._is_all_true(valid):
             raise ValueError(
                 "Expected value argument "
-                f"({type(value).__name__} of shape {tuple(value.shape)}) "
+                f"({type(value).__name__} of shape {value.shape}) "
                 f"to be within the support ({repr(support)}) "
                 f"of the distribution {repr(self)}, "
                 f"but found invalid values:\n{value}"

@@ -339,7 +339,7 @@ def gen_alias_from_base(
         if out.shape != target_meta_tensor.shape:
             raise AssertionError(
                 "incorrect out shape after application of ViewMeta sequence: "
-                f"{tuple(out.shape)} (actual) vs {tuple(target_meta_tensor.shape)} (expected)"
+                f"{out.shape} (actual) vs {target_meta_tensor.shape} (expected)"
             )
         return patch_requires_grad(out)
 

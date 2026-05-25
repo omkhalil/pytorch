@@ -3770,9 +3770,9 @@ def linear_cross_entropy(
     out_features = linear_weight.shape[1:-1]
     if len(out_features) > 0 and len(num_batches) == 0:
         raise RuntimeError(
-            f"K-dimensional loss defined by linear_weight shape {tuple(linear_weight.shape)} requires"
+            f"K-dimensional loss defined by linear_weight shape {linear_weight.shape} requires"
             f" batched input, (N, {in_features}), got unbatched"
-            f" input with shape {tuple(input.shape)}"
+            f" input with shape {input.shape}"
         )
     logits_shape = (*num_batches, num_classes, *out_features)
     # Ensure compatibility with cross_entropy_loss_symint that uses
