@@ -244,6 +244,10 @@ class NNModuleVariable(VariableTracker):
 
         return object_richcompare(self, tx, other, op)
 
+    def repr_impl(self, tx: "InstructionTranslator") -> VariableTracker:
+        mod = tx.output.get_submodule(self.module_key)
+        return VariableTracker.build(tx, repr(mod))
+
     def _wrap_submodule(
         self,
         tx: "InstructionTranslator",
